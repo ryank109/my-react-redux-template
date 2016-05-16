@@ -1,0 +1,53 @@
+@import 'variables';
+
+.sbm-chart {
+    &__axis {
+        fill: #c0c0c0;
+        font-size: 11px;
+        stroke-width: 1px;
+        stroke: $normal-text-color;
+
+        &__label {
+            fill: $normal-text-color;
+            font-size: 13px;
+            stroke-width: 0;
+        }
+
+        & .domain {
+            fill: none;
+            stroke-width: 0;
+        }
+
+        & .tick {
+            fill: $normal-text-color;
+
+            & line {
+                opacity: 0.2;
+            }
+
+            & text {
+                stroke-width: 0;
+            }
+        }
+    }
+
+    &__focus {
+        &__bubble {
+            opacity: .3;
+        }
+
+        &__dot {
+            stroke: #fff;
+            stroke-width: 1px;
+        }
+
+        &--is-hidden {
+            display: none;
+        }
+    }
+
+    &__plot-area-overlay {
+        fill: none;
+        pointer-events: all;
+    }
+}

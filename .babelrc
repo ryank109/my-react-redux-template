@@ -1,0 +1,14 @@
+{
+    presets: [ "es2015", "react" ],
+    plugins: [
+        "lodash",
+        "react-require",
+        "transform-object-rest-spread",
+        "transform-react-jsx"
+    ],
+    env: {
+        development: {
+            presets: ["react-hmre"]
+        }
+    }
+}

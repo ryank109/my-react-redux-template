@@ -1,0 +1,8 @@
+.DS_Store
+.gradle
+.eslintcache
+build
+dist
+node_modules
+npm-debug.log
+test-reports

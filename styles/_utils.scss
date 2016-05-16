@@ -1,0 +1,4 @@
+@mixin fixed_width($width) {
+    min-width: $width;
+    max-width: $width;
+}

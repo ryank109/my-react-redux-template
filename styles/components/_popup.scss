@@ -1,0 +1,224 @@
+@import 'variables';
+
+.sbm-modal-layover {
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    opacity: 0.8;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.sbm-modal {
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 3px;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.2s;
+    transform: translateY(-200px);
+    z-index: 1000;
+
+    /** undoing bootstrap, zk **/
+    line-height: normal;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &--show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sbm-modal-header {
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    font-size: 18px;
+    padding: 20px 15px;
+
+    &__close {
+        color: #999;
+        cursor: pointer;
+        flex-grow: 0;
+
+        &:hover {
+            color: #333;
+        }
+    }
+
+    &__title {
+        display: block;
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.sbm-modal-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.sbm-modal-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 15px;
+
+    &__container {
+        flex-grow: 1;
+        overflow: auto;
+    }
+}
+
+.sbm-modal-footer {
+    border-top: 1px solid $border-color;
+    padding: 15px;
+
+    &--align-right {
+        text-align: right;
+    }
+}
+
+.sbm-popup {
+    position: absolute;
+    z-index: 10;
+}
+
+.sbm-popup-menu {
+    background-color: #aaa;
+    border: 1px solid #666;
+    display: flex;
+    flex-direction: column;
+    padding: 3px 0;
+}
+
+.sbm-popup-menu-item {
+    cursor: pointer;
+    padding: 5px 20px;
+
+    &:hover {
+        background-color: rgba(1, 1, 1, 0.1);
+    }
+}
+
+/** chart popover **/
+.sbm-chart-popover {
+    background-color: #fff;
+    border: 1px solid;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+    padding: 3px 8px;
+
+    &__base {
+        pointer-events: none;
+        z-index: 100;
+    }
+
+    &--bottom {
+        &:before,
+        &:after {
+            top: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:before {
+            border-top-color: inherit;
+            border-width: 7px;
+            margin-left: -7px;
+        }
+
+        &:after {
+            border-top-color: #fff;
+            border-width: 7px;
+            margin-left: -7px;
+            margin-top: -1px;
+        }
+    }
+
+    &--left {
+        &:before,
+        &:after {
+            right: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:before {
+            border-right-color: inherit;
+            border-width: 7px;
+            margin-top: -7px;
+        }
+
+        &:after {
+            border-right-color: #fff;
+            border-width: 7px;
+            margin-top: -7px;
+            margin-right: -1px;
+        }
+    }
+
+    &--top {
+        &:before,
+        &:after {
+            bottom: 100%;
+            left: 50%;
+            border: solid transparent;
+            content: " ";
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:before {
+            border-bottom-color: inherit;
+            border-width: 7px;
+            margin-left: -7px;
+        }
+
+        &:after {
+            border-bottom-color: #fff;
+            border-width: 7px;
+            margin-left: -7px;
+            margin-bottom: -1px;
+        }
+    }
+
+    &--right {
+        &:before,
+        &:after {
+            left: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            position: absolute;
+            pointer-events: none;
+        }
+
+        &:before {
+            border-left-color: inherit;
+            border-width: 7px;
+            margin-top: -7px;
+        }
+
+        &:after {
+            border-left-color: #fff;
+            border-width: 7px;
+            margin-top: -7px;
+            margin-left: -1px;
+        }
+    }
+}
