@@ -48,7 +48,7 @@ describe('components/Input', function() {
                 type="text"
             />
         );
-    })
+    });
 
     it('should trigger onChange handler', function(done) {
         const onChangeHandler = value => {

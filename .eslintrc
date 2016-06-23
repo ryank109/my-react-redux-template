@@ -64,6 +64,7 @@
     'keyword-spacing': 2,
     'no-mixed-spaces-and-tabs': 2,
     'no-trailing-spaces': 1,
+    'semi': ['error', 'always'],
     'semi-spacing': [2, {'before': false, 'after': true}],
     'space-before-blocks': 2,
     'space-in-parens': 2,
@@ -76,9 +77,10 @@
     'react'
   ],
   'globals': {
-    'afterEach': true,
-    'beforeEach': true,
+    'R1SOFT': true,
     'describe': true,
-    'it': true
+    'it': true,
+    'beforeEach': true,
+    'afterEach': true
   }
 }
