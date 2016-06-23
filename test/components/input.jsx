@@ -1,6 +1,6 @@
 import expect from 'expect';
 import { createRenderer, Simulate, renderIntoDocument } from 'react-addons-test-utils';
-import Input from 'sbm/components/input';
+import Input from 'rk/components/input';
 
 describe('components/Input', function() {
     const renderer = createRenderer();

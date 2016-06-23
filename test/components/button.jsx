@@ -1,6 +1,6 @@
 import expect from 'expect';
 import { createRenderer, Simulate, renderIntoDocument } from 'react-addons-test-utils';
-import Button from 'sbm/components/button';
+import Button from 'rk/components/button';
 
 describe('components/Button', function() {
     it('should render the button', function() {
@@ -9,11 +9,16 @@ describe('components/Button', function() {
         renderer.render(<Button label="MyButton" onClick={onClickHandler} />);
         const result = renderer.getRenderOutput();
 
-        expect(result.type).toBe('button');
-        expect(result.props.className).toBe('sbm-button');
-        expect(result.props.onClick).toBe(onClickHandler);
-        expect(result.props.type).toBe('button');
-        expect(result.props.children).toBe('MyButton');
+        expect(result).toEqualJSX(
+            <button
+                className="sbm-button"
+                onClick={onClickHandler}
+                ref="button"
+                type="button"
+            >
+                MyButton
+            </button>
+        );
     });
 
     it('should render with class name', function() {
@@ -22,7 +27,16 @@ describe('components/Button', function() {
         renderer.render(<Button className="my-class" label="MyButton" onClick={onClickHandler} />);
         const result = renderer.getRenderOutput();
 
-        expect(result.props.className).toBe('sbm-button my-class');
+        expect(result).toEqualJSX(
+            <button
+                className="sbm-button my-class"
+                onClick={onClickHandler}
+                ref="button"
+                type="button"
+            >
+                MyButton
+            </button>
+        );
     });
 
     it('should trigger onClick handler', function(done) {

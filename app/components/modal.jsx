@@ -6,16 +6,16 @@ import Icon from 'rk/components/icon';
 export default function(CompositComponent) {
     class ModalContainer extends Component {
         render() {
-            const className = classNames('sbm-modal__container', this.props.className);
+            const className = classNames('rk-modal__container', this.props.className);
             const style = {
                 height: `${this.props.height}px`,
                 width: `${this.props.width}px`
             };
             return (
                 <div className={className} style={style}>
-                    <div className="sbm-modal-header">
-                        <span className="sbm-modal-header__title">{this.props.title}</span>
-                        <Icon className="sbm-modal-header__close"
+                    <div className="rk-modal-header">
+                        <span className="rk-modal-header__title">{this.props.title}</span>
+                        <Icon className="rk-modal-header__close"
                             type="close"
                             onClick={() => this.props.closePopup(this.props.id)}
                         />
@@ -23,10 +23,6 @@ export default function(CompositComponent) {
                     <CompositComponent {...this.props}/>
                 </div>
             );
-        }
-
-        renderFooter() {
-            return <div className="sbm-modal-footer">{this.props.footer}</div>;
         }
     }
 
@@ -38,10 +34,10 @@ export default function(CompositComponent) {
         width: PropTypes.number.isRequired
     };
 
-    const SbmModal = Modal(ModalContainer);
-    SbmModal.defaultProps = {
-        layoverClassName: 'sbm-modal-layover',
-        popupClassName: 'sbm-modal sbm-modal--show'
+    const rkModal = Modal(ModalContainer);
+    rkModal.defaultProps = {
+        layoverClassName: 'rk-modal-layover',
+        popupClassName: 'rk-modal rk-modal--show'
     };
-    return SbmModal;
+    return rkModal;
 }

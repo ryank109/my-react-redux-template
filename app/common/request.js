@@ -6,11 +6,11 @@ const DEFAULT_HEADERS = {
     'Content-Type': 'application/json'
 };
 
-// export function getHostUrl() {
-//     const protocol = location.protocol;
-//     const port = (location.port && location.port.length > 0) ? ':' + location.port : '';
-//     return `${protocol}//${location.hostname}${port}`;
-// }
+export function getHostUrl() {
+    const protocol = location.protocol;
+    const port = (location.port && location.port.length > 0) ? ':' + location.port : '';
+    return `${protocol}//${location.hostname}${port}`;
+}
 
 function getQueryParamString(queryParams) {
     return map(queryParams, (value, key) => `${key}=${encodeURIComponent(value)}`).join('&');

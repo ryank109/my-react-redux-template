@@ -4,7 +4,7 @@ var path = require('path');
 /**
  * Make sure to update the 'alias' configuration
  */
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
     browsers: [ 'PhantomJS' ],
     singleRun: true,
@@ -13,11 +13,10 @@ module.exports = function (config) {
       'tests.webpack.js'
     ],
     preprocessors: {
-      'app/**/*': [ 'webpack', 'sourcemap' ],
       'tests.webpack.js': [ 'webpack', 'sourcemap' ]
     },
 
-    reporters: ['progress', 'dots', 'junit'],
+    reporters: ['progress', 'dots', 'junit', 'coverage'],
     junitReporter: {
       outputDir: '../test-reports',
       outputFile: 'test-results.xml',
@@ -31,6 +30,13 @@ module.exports = function (config) {
           {
             test: /\.js$|\.jsx$/,
             loader: 'babel'
+          }
+        ],
+        preLoaders: [
+          {
+            test: /\.js$|\.jsx$/,
+            include: path.resolve(__dirname, '../app'),
+            loader: 'isparta'
           }
         ]
       },
@@ -48,6 +54,17 @@ module.exports = function (config) {
     },
     webpackServer: {
       noInfo: true
+    },
+
+    /**
+     * Change the type to 'html' if you want HTML report
+     */
+    coverageReporter: {
+      type: 'cobertura',
+      dir: '../test-reports/coverage/',
+      subdir: function(browser) {
+        return browser.toLowerCase().split(/[ /-]/)[0];
+      }
     }
   });
 };

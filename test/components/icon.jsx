@@ -1,6 +1,6 @@
 import expect from 'expect';
 import { createRenderer, Simulate, renderIntoDocument } from 'react-addons-test-utils';
-import Icon from 'sbm/components/icon';
+import Icon from 'rk/components/icon';
 
 describe('components/Icon', function() {
     it('should render with type', function() {
