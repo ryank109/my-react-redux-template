@@ -1,7 +1,7 @@
 ## React + Redux Template
 
 ### Setup
- 1. Requires [nodeJS](https://nodejs.org/en/)
+ 1. Requires [nodeJS](https://nodejs.org/en/) - get the current, not LTS
  2. Run `npm i`
 
 ### NPM Tasks (`npm run [task_name]`)
