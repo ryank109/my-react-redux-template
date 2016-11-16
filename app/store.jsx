@@ -2,7 +2,7 @@ import { browserHistory } from 'react-router';
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
-import reducers from 'sbm/reducers';
+import reducers from 'rk/reducers';
 
 function initializeDevToolsExtension() {
     return window.devToolsExtension({
