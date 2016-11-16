@@ -10,7 +10,7 @@ class MyModule extends Component {
             <div>
                 My Module
                 <Button label="Open popup" onClick={() => this.props.openPopup('modal1')} />
-                <MyModal id="modal1" closePopup={() => this.props.closePopup('modal1')}/>
+                <MyModal id="modal1" closePopup={this.props.closePopup}/>
             </div>
         );
     }

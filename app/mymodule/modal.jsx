@@ -7,7 +7,7 @@ class MyModal extends Component {
         return (
             <div>
                 <div>Some content</div>
-                <Button label="Close" onClick={this.props.closePopup} />
+                <Button label="Close" onClick={() => this.props.closePopup(this.props.id)} />
             </div>
         );
     }
