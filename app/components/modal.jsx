@@ -37,7 +37,7 @@ export default function(CompositComponent) {
     const rkModal = Modal(ModalContainer);
     rkModal.defaultProps = {
         layoverClassName: 'rk-modal-layover',
-        popupClassName: 'rk-modal rk-modal--show'
+        popupClassName: 'rk-modal'
     };
     return rkModal;
 }

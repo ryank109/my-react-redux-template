@@ -1,0 +1,26 @@
+exports[`components/button should render the button 1`] = `
+<button
+  className="sbm-button"
+  onClick={[Function]}
+  type="button">
+  MyButton
+</button>
+`;
+
+exports[`components/button should render with class name 1`] = `
+<button
+  className="sbm-button my-class"
+  onClick={[Function]}
+  type="button">
+  MyButton
+</button>
+`;
+
+exports[`components/button should render with disabled 1`] = `
+<button
+  className="sbm-button"
+  onClick={[Function]}
+  type="button">
+  MyButton
+</button>
+`;

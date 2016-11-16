@@ -13,6 +13,7 @@ config.entry = {
   vendor: VENDOR_DEPENDENCIES.concat(['webpack-hot-middleware/client'])
 };
 config.plugins = config.plugins.concat([
+  new webpack.EvalSourceMapDevToolPlugin(),
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
   fontAwesomeCss

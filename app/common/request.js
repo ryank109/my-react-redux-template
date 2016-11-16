@@ -1,5 +1,4 @@
 import { forEach, map } from 'lodash';
-import { Promise } from 'rsvp';
 
 const DONE = 4;
 const DEFAULT_HEADERS = {

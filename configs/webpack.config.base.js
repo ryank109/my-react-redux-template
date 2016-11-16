@@ -17,8 +17,7 @@ var VENDOR_DEPENDENCIES = [
   'redux',
   'redux-thunk',
   'reselect',
-  'rsvp',
-  'webcomponents.js/MutationObserver'
+  'whatwg-fetch'
 ];
 
 var NODE_ENV = process.env.NODE_ENV;
@@ -59,6 +58,9 @@ var config = {
       __STAGING__: env.staging,
       __PRODUCTION__: env.production,
       __CURRENT_ENV__: '\'' + (NODE_ENV) + '\''
+    }),
+    new webpack.ProvidePlugin({
+      'Promise': 'es6-promise'
     }),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.' + projectName + '.js'),
     mainCss
