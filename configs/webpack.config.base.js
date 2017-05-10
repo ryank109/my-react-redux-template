@@ -2,23 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var autoprefixer = require('autoprefixer');
-
-var projectName = 'rk';
-
-var VENDOR_DEPENDENCIES = [
-  'classnames',
-  'lodash',
-  'react',
-  'react-dom',
-  'react-redux',
-  'react-redux-popup',
-  'react-router',
-  'react-router-redux',
-  'redux',
-  'redux-thunk',
-  'reselect',
-  'whatwg-fetch'
-];
+var vendors = require('./vendors');
 
 var NODE_ENV = process.env.NODE_ENV;
 var env = {
@@ -27,29 +11,30 @@ var env = {
   test: NODE_ENV === 'test',
   development: NODE_ENV === 'development' || typeof NODE_ENV === 'undefined'
 };
-env.build = env.production || env.staging;
 
-var mainCss = new ExtractTextPlugin(projectName + '.css');
+Object.assign(env, {
+  build: (env.production || env.staging)
+});
 
-var config = {
-  entry: {
-    main: path.join(__dirname, '../app/main.jsx'),
-    vendor: VENDOR_DEPENDENCIES
-  },
+var mainCss = new ExtractTextPlugin({ filename: 'rk.css' });
+var stylePath = path.join(__dirname, '../styles');
 
+module.exports = {
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: projectName + '.js',
+    path: path.resolve(__dirname, '../dist'),
+    filename: '[name].js',
     publicPath: '/'
   },
 
   resolve: {
-    root: path.join(__dirname, ''),
-    modulesDirectories: [
-      'node_modules',
-      'app'
-    ],
-    extensions: ['', '.js', '.jsx']
+    alias: {
+      'app': path.resolve(__dirname, '../app')
+    },
+    extensions: ['.js', '.jsx'],
+    modules: [
+      path.resolve(__dirname, '../node_modules'),
+      path.resolve(__dirname, '../app')
+    ]
   },
 
   plugins: [
@@ -59,31 +44,75 @@ var config = {
       __PRODUCTION__: env.production,
       __CURRENT_ENV__: '\'' + (NODE_ENV) + '\''
     }),
-    new webpack.ProvidePlugin({
-      'Promise': 'es6-promise'
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'vendor.js'
     }),
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.' + projectName + '.js'),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.ProvidePlugin({
+      'React': 'react'
+    }),
     mainCss
   ],
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$|\.jsx$/,
         include: path.join(__dirname, '../app'),
-        loader: 'babel'
+        use: 'babel-loader'
       },
       {
         test: /\.scss$/,
-        include: path.join(__dirname, '../styles'),
-        loader: mainCss.extract(['css-loader', 'postcss-loader', 'sass-loader'])
+        include: stylePath,
+        use: mainCss.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: { importLoaders: 1 }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins: function() {
+                  autoprefixer({
+                    browsers: ['last 2 version', 'ie >= 11']
+                  })
+                }
+              }
+            },
+            'sass-loader'
+          ]
+        })
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        include: stylePath,
+        use: 'file-loader?mimetype=image/svg+xml&name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        include: stylePath,
+        use: "file-loader?mimetype=application/font-woff&name=fonts/[name].[ext]"
+      },
+      {
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        include: stylePath,
+        use: "file-loader?mimetype=application/font-woff&name=fonts/[name].[ext]"
+      },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        include: stylePath,
+        use: "file-loader?mimetype=application/octet-stream&name=fonts/[name].[ext]"
+      },
+      {
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+        include: stylePath,
+        use: "file-loader&name=fonts/[name].[ext]"
       }
     ]
-  },
-
-  postcss: [ autoprefixer({ browsers: ['last 2 versions', 'ie >= 9'] }) ]
+  }
 };
-
-config.resolve.alias = {};
-config.resolve.alias[projectName] = path.resolve(__dirname, '../app');
-module.exports = config;

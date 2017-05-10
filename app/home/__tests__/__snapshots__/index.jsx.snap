@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home/index should render the home component 1`] = `
+<div>
+  My Module
+  <button
+    onClick={[Function]}
+  >
+    Open popup
+  </button>
+  <Connect(p)
+    closePopup={[Function]}
+    id="modal1"
+  />
+</div>
+`;

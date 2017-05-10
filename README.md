@@ -29,7 +29,6 @@ app                            // application directory
  - router.jsx                  // router definition
  - store.jsx                   // redux store
 configs                        // directory where webpack/test configurations are
-mocks                          // if you need to define any mock .json files
 styles                         // sass styles - make use of BEM css style guidelines
 test                           // javascript tests
 .babelrc                       // babel (es2015) configuration

@@ -1,14 +1,42 @@
 {
-    presets: [ "es2015", "react" ],
-    plugins: [
-        "lodash",
-        "react-require",
-        "transform-object-rest-spread",
-        "transform-react-jsx"
-    ],
     env: {
         development: {
-            presets: ["react-hmre"]
+            presets: [
+                ["env", {
+                    targets: {
+                        browsers: ["last 2 versions", "ie >= 11"]
+                    },
+                    includes: ["transform-object-rest-spread"],
+                    modules: false,
+                    useBuiltIns: true
+                }],
+                "react",
+                "react-hmre"
+            ]
+        },
+        test: {
+            presets: [
+                ["env", {
+                    targets: {
+                        browsers: ["last 2 versions", "ie >= 11"]
+                    },
+                    includes: ["transform-object-rest-spread"],
+                    useBuiltIns: true
+                }],
+                "react"
+            ]
         }
-    }
+    },
+    plugins: ["lodash"],
+    presets: [
+        ["env", {
+            targets: {
+                browsers: ["last 2 versions", "ie >= 11"]
+            },
+            includes: ["transform-object-rest-spread"],
+            modules: false,
+            useBuiltIns: true
+        }],
+        "react"
+    ]
 }

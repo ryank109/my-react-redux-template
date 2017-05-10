@@ -1,4 +1,8 @@
 var path = require('path');
+
+// set React definition to window
+window.React = require('react');
+
 var jasmineReporters = require('jasmine-reporters');
 jasmine.VERBOSE = true;
 jasmine.getEnv().addReporter(
