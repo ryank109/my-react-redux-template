@@ -4,6 +4,7 @@ module.exports = [
   'lodash',
   'prop-types',
   'react',
+  'react-addons-css-transition-group',
   'react-dom',
   'react-redux',
   'react-redux-popup',
